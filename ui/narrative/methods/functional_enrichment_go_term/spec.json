@@ -32,15 +32,27 @@
     }
   },
   {
-    "id": "filter_ref_features",
-    "optional":true,
-    "advanced":false,
-    "allow_multiple":false,
-    "default_values":["0"],
-    "field_type" : "checkbox",
-    "checkbox_options":{
-        "checked_value": 1,
-        "unchecked_value": 0
+    "id": "statistical_significance",
+    "optional": false,
+    "advanced": false,
+    "allow_multiple": false,
+    "default_values": ["right_tailed"],
+    "field_type": "dropdown",
+    "dropdown_options":{
+        "options": [
+        {
+          "display": "Over Representation (Right Tailed)",
+          "value": "right_tailed",
+          "id": "right_tailed",
+          "ui_name": "right_tailed"
+        },
+        {
+          "display": "Under Representation (Left Tailed)",
+          "value": "left_tailed",
+          "id": "left_tailed",
+          "ui_name": "left_tailed"
+        }
+      ]
     }
   }],
   "behavior" : {
@@ -63,8 +75,16 @@
             "target_property" : "propagation"
         },
         {
-            "input_parameter" : "filter_ref_features",
+            "constant_value"  : 1,
             "target_property" : "filter_ref_features"
+        },
+        {
+            "input_parameter" : "statistical_significance",
+            "target_property" : "statistical_significance"
+        },
+        {
+            "constant_value"  : 1,
+            "target_property" : "ignore_go_term_not_in_feature_set"
         }],
       "output_mapping" : [
         {
